@@ -1,0 +1,66 @@
+
+import java.io.*;
+import java.util.*;
+
+
+class bt
+{
+   class node
+   {
+       private int data;
+       private node l,r;
+   }
+    node t=null;
+   public void insert(int x)
+   {
+       t=create(x,t);
+   }
+   private node create(int x,node t)
+    {
+	node p=new node();
+	
+		if(t==null)
+		{
+			p.data=x;
+			p.l=null;
+			p.r=null;
+			t=p;
+		}
+		else
+		{
+			if(t.l==null)
+			{
+				t.l=create(x,t.l);
+			}
+                        else if(t.r==null)
+			{
+				t.r=create(x,t.r);
+			}
+		}
+	
+	return t;
+}
+
+public void inorder(node t)
+{
+	if(t!=null)
+	{
+                System.out.print(" "+t.data);
+		inorder(t.l);
+		inorder(t.r);
+	}
+}
+}
+class btree
+{
+    public static void main(String args[])
+    {
+        bt e=new bt();
+        e.insert(4);
+        e.insert(5);
+        e.insert(2);
+        e.insert(1);
+        e.insert(6);
+        e.inorder(e.t);
+    }
+}
